@@ -33,19 +33,23 @@ public class Main {
             } else if (menu == 2) {
                 service.showBoardList();
 
-            } else if (menu == 3) {
-                System.out.print("조회할 글 번호: ");
-                int id = Integer.parseInt(sc.nextLine());
+            }  else if (menu == 3) {
+            System.out.print("조회할 글 번호: ");
+            int id = Integer.parseInt(sc.nextLine());
 
-                Board board = service.findBoardById(id);
-                if (board != null) {
-                    System.out.println("번호: " + board.id);
-                    System.out.println("제목: " + board.title);
-                    System.out.println("내용: " + board.content);
-                    System.out.println("작성자: " + board.writer);
-                } else {
-                    System.out.println("해당 게시글이 없습니다.");
-                }
+            Board board = service.findBoardById(id);
+            if (board != null) {
+                board.viewCount++;
+
+                System.out.println("번호: " + board.id);
+                System.out.println("제목: " + board.title);
+                System.out.println("내용: " + board.content);
+                System.out.println("작성자: " + board.writer);
+                System.out.println("조회수: " + board.viewCount);
+                System.out.println("작성일: " + board.createdAt);
+            } else {
+                System.out.println("해당 게시글이 없습니다.");
+            }
 
             } else if (menu == 4) {
                 System.out.print("수정할 글 번호: ");

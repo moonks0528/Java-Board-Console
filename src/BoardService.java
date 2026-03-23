@@ -16,8 +16,15 @@ public class BoardService {
             return;
         }
 
+        System.out.println("번호 | 제목 | 작성자 | 조회수 | 작성일");
         for (Board board : boardList) {
-            System.out.println(board.id + " | " + board.title + " | " + board.writer);
+            System.out.println(
+                    board.id + " | " +
+                            board.title + " | " +
+                            board.writer + " | " +
+                            board.viewCount + " | " +
+                            board.createdAt
+            );
         }
     }
 
