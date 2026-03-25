@@ -12,6 +12,7 @@ public class Main {
             System.out.println("3. 글 조회");
             System.out.println("4. 글 수정");
             System.out.println("5. 글 삭제");
+            System.out.println("6. 글 검색");
             System.out.println("0. 종료");
             System.out.print("메뉴 선택: ");
 
@@ -33,23 +34,23 @@ public class Main {
             } else if (menu == 2) {
                 service.showBoardList();
 
-            }  else if (menu == 3) {
-            System.out.print("조회할 글 번호: ");
-            int id = Integer.parseInt(sc.nextLine());
+            } else if (menu == 3) {
+                System.out.print("조회할 글 번호: ");
+                int id = Integer.parseInt(sc.nextLine());
 
-            Board board = service.findBoardById(id);
-            if (board != null) {
-                board.viewCount++;
+                Board board = service.findBoardById(id);
+                if (board != null) {
+                    board.viewCount++;
 
-                System.out.println("번호: " + board.id);
-                System.out.println("제목: " + board.title);
-                System.out.println("내용: " + board.content);
-                System.out.println("작성자: " + board.writer);
-                System.out.println("조회수: " + board.viewCount);
-                System.out.println("작성일: " + board.createdAt);
-            } else {
-                System.out.println("해당 게시글이 없습니다.");
-            }
+                    System.out.println("번호: " + board.id);
+                    System.out.println("제목: " + board.title);
+                    System.out.println("내용: " + board.content);
+                    System.out.println("작성자: " + board.writer);
+                    System.out.println("조회수: " + board.viewCount);
+                    System.out.println("작성일: " + board.createdAt);
+                } else {
+                    System.out.println("해당 게시글이 없습니다.");
+                }
 
             } else if (menu == 4) {
                 System.out.print("수정할 글 번호: ");
@@ -68,6 +69,12 @@ public class Main {
                 int id = Integer.parseInt(sc.nextLine());
 
                 service.deleteBoard(id);
+
+            } else if (menu == 6) {
+                System.out.print("검색어: ");
+                String keyword = sc.nextLine();
+
+                service.searchBoard(keyword);
 
             } else if (menu == 0) {
                 System.out.println("프로그램 종료");

@@ -57,4 +57,28 @@ public class BoardService {
             System.out.println("해당 번호의 게시글이 없습니다.");
         }
     }
+
+    public void searchBoard(String keyword) {
+        boolean found = false;
+
+        System.out.println("검색 결과");
+        System.out.println("번호 | 제목 | 작성자 | 조회수 | 작성일");
+
+        for (Board board : boardList) {
+            if (board.title.contains(keyword) || board.content.contains(keyword) || board.writer.contains(keyword)) {
+                System.out.println(
+                        board.id + " | " +
+                                board.title + " | " +
+                                board.writer + " | " +
+                                board.viewCount + " | " +
+                                board.createdAt
+                );
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("검색 결과가 없습니다.");
+        }
+    }
 }
